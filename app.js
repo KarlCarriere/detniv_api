@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 var hateoasLinker = require('express-hateoas-links');
 const app = express();
 
-app.use(express.json());  
+app.use(express.json());
 
-app.use(hateoasLinker); 
+app.use(hateoasLinker);
 
 
 app.use((req, res, next) => {
@@ -35,6 +35,7 @@ app.use('/categories', categoryRoutes);
 app.use('/products', productRoutes);
 app.use(userRoutes);
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use(errorController.get404);
 

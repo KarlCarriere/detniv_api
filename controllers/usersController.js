@@ -5,7 +5,7 @@ const Product = require('../models/product');
 
 const dotenv = require('dotenv');
 dotenv.config();
-const url_base = process.env.URL + ":" + process.env.PORT;
+const url_base = process.env.URL;
 
 
 exports.getUsers = (req, res, next) => {

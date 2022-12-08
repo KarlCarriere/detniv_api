@@ -3,7 +3,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const Product = require('../models/product');
-const url_base = process.env.URL + ":" + process.env.PORT;
+const url_base = process.env.URL;
 
 exports.createSearch = (req, res, next) => {
   let { productSearch } = req.params || null;

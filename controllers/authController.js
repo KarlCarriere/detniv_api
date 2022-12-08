@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
-const url_base = process.env.URL + ":" + process.env.PORT;
+const url_base = process.env.URL;
 
 const User = require('../models/user');
 

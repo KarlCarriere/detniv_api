@@ -3,7 +3,7 @@
 const Category = require('../models/category');
 const Product = require('../models/product');
 const User = require('../models/user');
-const url_base = process.env.URL + ":" + process.env.PORT;
+const url_base = process.env.URL;
 
 exports.getProducts = (req, res, next) => {
     let totalItems;

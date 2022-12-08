@@ -5,7 +5,7 @@ const Category = require('../models/category');
 const Product = require('../models/product');
 
 dotenv.config();
-const url_base = process.env.URL + ":" + process.env.PORT;
+const url_base = process.env.URL;
 
 exports.getcategories = (req, res, next) => {
   Category.find()
