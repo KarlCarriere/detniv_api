@@ -62,8 +62,9 @@ exports.getProduct = (req, res, next) => {
     Product.findById(productId)
     .populate('user')
     .then(result => {
+        console.log(result);
         const productWithHateoas = {
-            ...result,
+            ...result._doc,
             _links: {
                 self: {
                     href: url_base + "/search/" + result._id,
@@ -74,11 +75,11 @@ exports.getProduct = (req, res, next) => {
                     method: "GET"
                 },
                 category: {
-                    href: url_base + "/categories/" + result.categoryId,
+                    href: url_base + "/categories/" + result.category,
                     method: "GET"
                 },
                 user: {
-                    href: url_base + "/user/" + result.userId,
+                    href: url_base + "/user/" + result.user._id,
                     method: "GET"
                 },
                 addToCart: {
