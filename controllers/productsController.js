@@ -99,7 +99,9 @@ exports.getProduct = (req, res, next) => {
         });
     })
     .catch(err => {
-        next(err);
+        const error = new Error('Le produit n\'existe pas.');
+        error.statusCode = 404;
+        throw error;
     });
 };
 
