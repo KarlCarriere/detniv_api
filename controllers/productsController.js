@@ -170,10 +170,11 @@ exports.createProduct = (req, res, next) => {
     if (imageUrl.length < 1 || imageUrl == null)
         errors.push("L'url de l'image ne doit pas être vide.");
 
-    if (categorie.length < 1 || categorie == null){
+    if (categorie.length < 1 || categorie == null)
         errors.push("La catégorie ne doit pas être vide. " + categorie);
+
+    if (errors.length > 0)
         return res.status(400).json({errors: errors});
-    }
 
     Category.findById(categorie)
     .then(category => {
