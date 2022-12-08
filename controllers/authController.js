@@ -12,13 +12,11 @@ exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  console.log(req.body);
-
   let loadedUser;
   User.findOne({email: email})
   .then(user =>{
     if (!user) {
-      const error = new Error('Utilisateur non trouvé');
+      const error = new Error('Utilisateur non trouvé : ' + req.body);
       error.statusCode = 404;
       throw error;
     }
