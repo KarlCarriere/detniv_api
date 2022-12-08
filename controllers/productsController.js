@@ -64,7 +64,7 @@ exports.getProduct = (req, res, next) => {
     .then(result => {
         console.log(result);
         const productWithHateoas = {
-            ...result._doc,
+            ...result,
             _links: {
                 self: {
                     href: url_base + "/search/" + result._id,
@@ -110,7 +110,7 @@ exports.getProductByUserId = (req, res, next) => {
     .then(result => {
         const productsWithHateoas = result.map(product => {
             return {
-              ...product._doc,
+              ...product,
               _links: {
                 self: {
                   href: url_base + "/search/" + product._id,
