@@ -15,7 +15,7 @@ exports.login = (req, res, next) => {
   User.findOne({email: email})
   .then(user =>{
     if (!user) {
-      const error = new Error('Utilisateur non trouvé : ' + email);
+      const error = new Error('Utilisateur non trouvé');
       error.statusCode = 404;
       throw error;
     }
