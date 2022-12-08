@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
 
     // Si le token n'est pas présent dans le header
     if (!authHeader) {
-        const error = new Error('Non authentifié');
+        const error = new Error('Non authentifié: ' + authHeader);
         error.statusCode = 401;
         throw error;
     }
