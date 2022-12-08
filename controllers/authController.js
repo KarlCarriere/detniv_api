@@ -53,7 +53,7 @@ exports.signup = (req, res, next) => {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   let errors = [];
 
-  return res.status(200).json({test: "test", body: req});
+  return res.status(200).json({test: "test", body: req.body});
 
   if (email.length > 50) errors.push("L'email ne doit pas dépasser 50 caractères");
   if (!emailRegex.test(email)) errors.push("L'email n'est pas valide");
