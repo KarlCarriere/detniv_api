@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.use(hateoasLinker);
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -35,8 +36,6 @@ app.use('/categories', categoryRoutes);
 app.use('/products', productRoutes);
 app.use(userRoutes);
 
-app.get('/favicon.ico', (req, res) => res.status(204));
-
 app.use(errorController.get404);
 
 app.use(function (err, req, res, next) {
@@ -46,13 +45,10 @@ app.use(function (err, req, res, next) {
 });
 
 
-const PORT = 3000;
 mongoose
-  .connect('mongodb://127.0.0.1:27017/detniv')
+  .connect(process.env.DATABASE)
   .then(() => {
-    app.listen(3000, () => {
-      console.log('Node.js est à l\'écoute sur le port %s ', PORT);
-    });
+    app.listen(process.env.PORT || 3000);
   })
   .catch(err => console.log(err));
 
