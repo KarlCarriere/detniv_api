@@ -63,7 +63,7 @@ exports.getProduct = (req, res, next) => {
     .populate('user')
     .then(result => {
         const productWithHateoas = {
-            ...result._doc,
+            ...result,
             _links: {
                 self: {
                     href: url_base + "/search/" + result._id,
@@ -195,7 +195,7 @@ exports.createProduct = (req, res, next) => {
             product.save()
             .then(result => {
                 const productWithHateoas = {
-                    ...result._doc,
+                    ...result,
                     _links: {
                         self: {
                             href: url_base + "/search/" + result._id,
@@ -243,7 +243,7 @@ exports.deleteProduct = (req, res, next) => {
     Product.findByIdAndRemove(productId)
     .then(result => {
         const productWithHateoas = {
-            ...result._doc,
+            ...result,
             _links: {
                 self: {
                     href: url_base + "/search/" + result._id,
