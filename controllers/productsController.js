@@ -171,7 +171,7 @@ exports.createProduct = (req, res, next) => {
         errors.push("L'url de l'image ne doit pas être vide.");
 
     if (categorie.length < 1 || categorie == null){
-        errors.push("La catégorie ne doit pas être vide.");
+        errors.push("La catégorie ne doit pas être vide. " + categorie);
         return res.status(400).json({errors: errors});
     }
 
