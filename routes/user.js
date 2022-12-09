@@ -31,9 +31,9 @@ const isAuth = require('../middleware/is-auth');
  *        city:
  *          type: string
  *          description: La ville de l'utilisateur
- *         cart:
- *           type: array
- *           description: Le panier de l'utilisateur
+ *        cart:
+ *          type: array
+ *          description: Le panier de l'utilisateur
  *      example:
  *        id: 60a9b0b0b0b0b0b0b0b0b0b0
  *        email: johndoe@example.com
