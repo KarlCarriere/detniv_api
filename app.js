@@ -2,6 +2,8 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require("swagger-jsdoc");
 var hateoasLinker = require('express-hateoas-links');
 const app = express();
 
@@ -35,6 +37,27 @@ app.use(searchRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/products', productRoutes);
 app.use(userRoutes);
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Detniv API",
+      version: "1.0.0",
+      description: "API pour le projet TP3 de Développement Web",
+    },
+    servers: [
+      {
+        url: "https://tp3.herokuapp.com",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"]
+};
+
+const specs = swaggerJsDoc(options);
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use(errorController.get404);
 

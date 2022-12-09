@@ -62,6 +62,11 @@ exports.getProduct = (req, res, next) => {
     Product.findById(productId)
     .populate('user')
     .then(result => {
+        if (!result) {
+            const error = new Error('Le produit n\'existe pas.');
+            error.statusCode = 404;
+            throw error;
+        }
         console.log(result);
         const productWithHateoas = {
             ...result,
@@ -88,17 +93,14 @@ exports.getProduct = (req, res, next) => {
                 },
             }
         };
-        if (!result) {
-            const error = new Error('Le produit n\'existe pas.');
-            error.statusCode = 404;
-            throw error;
-        }
+
         console.log(productWithHateoas);
         res.status(200).json({
             product: productWithHateoas
         });
     })
     .catch(err => {
+        console.log(err);
         next(err);
     });
 };
